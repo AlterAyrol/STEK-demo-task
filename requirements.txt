@@ -1,0 +1,15 @@
+selene>=2.0.0rc4
+
+pytest>=7.3.1
+
+allure-pytest
+
+webdriver-manager>=3.8.6
+
+selenium>=4.11.2
+
+python-dotenv==1.0.0
+
+requests
+
+pip==23.2.1
