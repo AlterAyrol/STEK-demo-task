@@ -72,15 +72,15 @@ def web_browser(request):
 
     yield driver, site_login, site_password
 
+
+@pytest.fixture(scope='function')
+def browser_report():
+    yield
     attach.add_html(browser)
     attach.add_screenshot(browser)
     attach.add_video(browser)
 
-    if request.param == 'chrome':
-        attach.add_logs(browser)
-
     browser.quit()
-
 
 @pytest.fixture(scope='function', params=[
     pytest.param([1920, 1080], id='FullHD'),

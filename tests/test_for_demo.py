@@ -17,7 +17,7 @@ class TestDemoCase:
     @allure.epic('Тестирование вкладок в боковом меню')
     @allure.feature('Реестр "Адресный фонд"')
     @allure.story("Проверка кнопки реестра 'Адресный фонд' на кликабельность и соответствие текста кнопки")
-    def test_element_is_available(self, web_browser):
+    def test_element_is_available(self, web_browser, browser_report):
         address_fond = 'Адресный фонд'
         addresses_of_residents = 'Адреса проживающих'
 
@@ -44,18 +44,18 @@ class TestDemoCase:
     @allure.epic('Тестирование вкладок в боковом меню')
     @allure.feature('Реестр "Адресный фонд"')
     @allure.story("Создание нового района в реестре")
-    def test_add_district(self, web_browser):
+    def test_add_district(self, web_browser, browser_report):
         new_district_name = 'new_district'
 
         browser, site_login, site_password = web_browser
         start_page = StartTestPage()
         address_fond_page = AddressFondPage()
 
-        # start_page.enter_login(browser, site_login)
-        # start_page.enter_password(browser, site_password)
-        #
-        # if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
-        #     browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
+        start_page.enter_login(browser, site_login)
+        start_page.enter_password(browser, site_password)
+
+        if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
+            browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
 
         start_page.address_fond_click(browser)
 
@@ -71,18 +71,18 @@ class TestDemoCase:
     @allure.epic('Тестирование вкладок в боковом меню')
     @allure.feature('Реестр "Адресный фонд"')
     @allure.story("Создание изменение названия района в реестре")
-    def test_change_district_name(self, web_browser):
+    def test_change_district_name(self, web_browser, browser_report):
         change_district_name = 'changed district name'
 
         browser, site_login, site_password = web_browser
         start_page = StartTestPage()
         address_fond_page = AddressFondPage()
 
-        # start_page.enter_login(browser, site_login)
-        # start_page.enter_password(browser, site_password)
-        #
-        # if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
-        #     browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
+        start_page.enter_login(browser, site_login)
+        start_page.enter_password(browser, site_password)
+
+        if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
+            browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
 
         start_page.address_fond_click(browser)
 
@@ -99,16 +99,16 @@ class TestDemoCase:
     @allure.epic('Тестирование вкладок в боковом меню')
     @allure.feature('Реестр "Адресный фонд"')
     @allure.story("Удаление района в реестре")
-    def test_delete_new_district(self, web_browser):
+    def test_delete_new_district(self, web_browser, browser_report):
         browser, site_login, site_password = web_browser
         start_page = StartTestPage()
         address_fond_page = AddressFondPage()
 
-        # start_page.enter_login(browser, site_login)
-        # start_page.enter_password(browser, site_password)
-        #
-        # if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
-        #     browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
+        start_page.enter_login(browser, site_login)
+        start_page.enter_password(browser, site_password)
+
+        if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
+            browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
 
         start_page.address_fond_click(browser)
 
@@ -127,7 +127,7 @@ class TestLogoutCase:
     @allure.epic('Тестирование меню пользователя в верхней навигационной панели')
     @allure.feature('Меню пользователя')
     @allure.story("Логаут из меню пользователя")
-    def test_logout(self, web_browser):
+    def test_logout(self, web_browser, browser_report):
         enter_text = 'Вход'
 
         browser, site_login, site_password = web_browser
