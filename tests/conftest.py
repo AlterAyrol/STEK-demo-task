@@ -74,11 +74,11 @@ def web_browser(request):
 
 
 @pytest.fixture(scope='function')
-def browser_report():
+def browser_report(driver):
     yield
-    attach.add_html(browser)
-    attach.add_screenshot(browser)
-    attach.add_video(browser)
+    attach.add_html(driver)
+    attach.add_screenshot(driver)
+    attach.add_video(driver)
 
     browser.quit()
 

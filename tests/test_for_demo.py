@@ -39,6 +39,8 @@ class TestDemoCase:
         address_fond_page.check_text_address_fond(browser, text=addresses_of_residents)
         address_fond_page.address_fond_clickable(browser)
 
+        browser_report(browser)
+
     @allure.severity(Severity.CRITICAL)
     @allure.label("owner", "AlterAyrol")
     @allure.epic('Тестирование вкладок в боковом меню')
@@ -65,6 +67,8 @@ class TestDemoCase:
         address_fond_page.district_name_input_field_add(browser, district_name=new_district_name)
 
         address_fond_page.check_text_district_on_page(browser, text=new_district_name)
+
+        browser_report(browser)
 
     @allure.severity(Severity.CRITICAL)
     @allure.label("owner", "AlterAyrol")
@@ -94,6 +98,8 @@ class TestDemoCase:
 
         address_fond_page.check_text_district_on_page(browser, text=change_district_name)
 
+        browser_report(browser)
+
     @allure.severity(Severity.CRITICAL)
     @allure.label("owner", "AlterAyrol")
     @allure.epic('Тестирование вкладок в боковом меню')
@@ -117,6 +123,8 @@ class TestDemoCase:
 
         address_fond_page.delete_button_click(browser)
         address_fond_page.yes_button_click(browser)
+
+        browser_report(browser)
 
 
 @allure.tag('logaut smoke check')
@@ -142,5 +150,7 @@ class TestLogoutCase:
         start_page.user_menu_click(browser)
         start_page.exit_button_click(browser)
         start_page.check_text_enter_form(browser, text=enter_text)
+
+        browser_report(browser)
 
 
