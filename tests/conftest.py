@@ -15,11 +15,13 @@ def load_env():
     load_dotenv()
 
 
-# @pytest.fixture(scope='function', params=[
-#     pytest.param('chrome', id='chrome'),
-#     pytest.param('firefox', id='firefox')
-# ])
-@pytest.fixture(scope='function')
+# @pytest.fixture(scope='function')
+
+
+@pytest.fixture(scope='function', params=[
+    pytest.param('chrome', id='chrome'),
+    pytest.param('firefox', id='firefox')
+])
 def web_browser(request):
 
     browser.config.base_url = 'https://demo.app.stack-it.ru/fl/.'
@@ -27,41 +29,41 @@ def web_browser(request):
     site_login = os.getenv('SITE_LOGIN')
     site_password = os.getenv('SITE_PASSWORD')
 
-    # options = Options()
+    options = Options()
 
-    # if request.param == 'chrome':
-    #     selenoid_capabilities = {
-    #         "browserName": "chrome",
-    #         "browserVersion": "100.0",
-    #         "selenoid:options": {
-    #             "enableVNC": True,
-    #             "enableVideo": True
-    #         }
-    #     }
-    #     options.capabilities.update(selenoid_capabilities)
-    #
-    # elif request.param == 'fireFox':
-    #     selenoid_capabilities = {
-    #         "browserName": "firefox",
-    #         "browserVersion": "97.0",
-    #         "selenoid:options": {
-    #             "enableVNC": True,
-    #             "enableVideo": True
-    #         }
-    #     }
-    #     options.capabilities.update(selenoid_capabilities)
-    #
-    # login = os.getenv('LOGIN')
-    # password = os.getenv('PASSWORD')
-    #
-    # driver = webdriver.Remote(
-    #     command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
-    #     options=options)
-    #
-    # browser.config.driver = driver
+    if request.param == 'chrome':
+        selenoid_capabilities = {
+            "browserName": "chrome",
+            "browserVersion": "100.0",
+            "selenoid:options": {
+                "enableVNC": True,
+                "enableVideo": True
+            }
+        }
+        options.capabilities.update(selenoid_capabilities)
 
-    driver_options = webdriver.ChromeOptions()
-    browser.config.driver_options = driver_options
+    elif request.param == 'fireFox':
+        selenoid_capabilities = {
+            "browserName": "firefox",
+            "browserVersion": "97.0",
+            "selenoid:options": {
+                "enableVNC": True,
+                "enableVideo": True
+            }
+        }
+        options.capabilities.update(selenoid_capabilities)
+
+    login = os.getenv('LOGIN')
+    password = os.getenv('PASSWORD')
+
+    driver = webdriver.Remote(
+        command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
+        options=options)
+
+    browser.config.driver = driver
+
+    # driver_options = webdriver.ChromeOptions()
+    # browser.config.driver_options = driver_options
 
     browser.config.window_width = 1920
     browser.config.window_height = 1080
@@ -74,8 +76,8 @@ def web_browser(request):
     attach.add_screenshot(browser)
     attach.add_video(browser)
 
-    # if request.param == 'chrome':
-    #     attach.add_logs(browser)
+    if request.param == 'chrome':
+        attach.add_logs(browser)
 
     browser.quit()
 
