@@ -24,6 +24,9 @@ def web_browser(request):
 
     browser.config.base_url = 'https://demo.app.stack-it.ru/fl/.'
 
+    site_login = os.getenv('SITE_LOGIN')
+    site_password = os.getenv('SITE_PASSWORD')
+
     # options = Options()
 
     # if request.param == 'chrome':
@@ -60,9 +63,12 @@ def web_browser(request):
     driver_options = webdriver.ChromeOptions()
     browser.config.driver_options = driver_options
 
+    browser.config.window_width = 1920
+    browser.config.window_height = 1080
+
     driver = browser.open('/')
 
-    yield driver
+    yield driver, site_login, site_password
 
     attach.add_html(browser)
     attach.add_screenshot(browser)
