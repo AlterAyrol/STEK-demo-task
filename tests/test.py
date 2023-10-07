@@ -28,6 +28,9 @@ class TestDemoCase:
         start_page.enter_login(browser, site_login)
         start_page.enter_password(browser, site_password)
 
+        if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
+            browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
+
         start_page.check_text_address_fond(browser, text=address_fond)
         start_page.address_fond_clickable(browser)
 
@@ -50,6 +53,9 @@ class TestDemoCase:
 
         start_page.enter_login(browser, site_login)
         start_page.enter_password(browser, site_password)
+
+        if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
+            browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
 
         start_page.address_fond_click(browser)
 
@@ -75,6 +81,9 @@ class TestDemoCase:
         start_page.enter_login(browser, site_login)
         start_page.enter_password(browser, site_password)
 
+        if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
+            browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
+
         start_page.address_fond_click(browser)
 
         address_fond_page.addresses_of_residents_click(browser)
@@ -98,6 +107,9 @@ class TestDemoCase:
         start_page.enter_login(browser, site_login)
         start_page.enter_password(browser, site_password)
 
+        if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
+            browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
+
         start_page.address_fond_click(browser)
 
         address_fond_page.addresses_of_residents_click(browser)
@@ -109,7 +121,7 @@ class TestDemoCase:
 
 @allure.tag('logaut smoke check')
 @allure.label("owner", "AlterAyrol")
-class TestDemoCase:
+class TestLogoutCase:
     @allure.severity(Severity.CRITICAL)
     @allure.label("owner", "AlterAyrol")
     @allure.epic('Тестирование меню пользователя в верхней навигационной панели')
@@ -124,6 +136,11 @@ class TestDemoCase:
         start_page.enter_login(browser, site_login)
         start_page.enter_password(browser, site_password)
 
+        if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
+            browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
+
         start_page.user_menu_click(browser)
         start_page.exit_button_click(browser)
         start_page.check_text_enter_form(browser, text=enter_text)
+
+
