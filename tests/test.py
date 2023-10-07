@@ -1,6 +1,9 @@
 import allure
 from allure_commons.types import Severity
 import time
+from selene import be, have
+from selene import by
+
 
 from STEK_demo_task.start_test_page import StartTestPage
 from STEK_demo_task.address_fond_page import AddressFondPage
@@ -8,22 +11,101 @@ from STEK_demo_task.address_fond_page import AddressFondPage
 
 class TestDemoCase:
 
-    def test_add_district(self, web_browser):
-        browser = web_browser
+    def test_element_is_available(self, web_browser):
+        address_fond = 'Адресный фонд'
+        addresses_of_residents = 'Адреса проживающих'
+
+        browser, site_login, site_password = web_browser
         start_page = StartTestPage()
         address_fond_page = AddressFondPage()
 
-        start_page.enter_login(browser, 'DEMOWEB')
-        start_page.enter_password(browser, 'awdrgy')
+        start_page.enter_login(browser, site_login)
+        start_page.enter_password(browser, site_password)
+
+        if browser.wait_until(have.text('Да')):
+            browser.element(by.text('Да')).click()
+
+        start_page.check_text_address_fond(browser, text=address_fond)
+        start_page.address_fond_clickable(browser)
+
+        start_page.address_fond_click(browser)
+
+        address_fond_page.check_text_address_fond(browser, text=addresses_of_residents)
+        address_fond_page.address_fond_clickable(browser)
+
+    def test_add_district(self, web_browser):
+        new_district_name = 'new_district'
+
+        browser, site_login, site_password = web_browser
+        start_page = StartTestPage()
+        address_fond_page = AddressFondPage()
+
+        start_page.enter_login(browser, site_login)
+        start_page.enter_password(browser, site_password)
+
+        if browser.wait_until(have.text('Да')):
+            browser.element(by.text('Да')).click()
         start_page.address_fond_click(browser)
 
         address_fond_page.addresses_of_residents_click(browser)
         address_fond_page.add_something_new_button_click(browser)
         address_fond_page.district_click(browser)
-        address_fond_page.district_name_input_field_add(browser, 'new_district')
+        address_fond_page.district_name_input_field_add(browser, district_name=new_district_name)
 
+        address_fond_page.check_text_district_on_page(browser, text=new_district_name)
 
+    def test_change_district_name(self, web_browser):
+        change_district_name = 'changed district name'
 
-        time.sleep(5)
+        browser, site_login, site_password = web_browser
+        start_page = StartTestPage()
+        address_fond_page = AddressFondPage()
 
+        start_page.enter_login(browser, site_login)
+        start_page.enter_password(browser, site_password)
 
+        if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
+            browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
+        start_page.address_fond_click(browser)
+
+        address_fond_page.addresses_of_residents_click(browser)
+
+        address_fond_page.edit_button_click(browser)
+        address_fond_page.select_all_text(browser)
+        address_fond_page.district_name_input_field_add(browser, district_name=change_district_name)
+
+        address_fond_page.check_text_district_on_page(browser, text=change_district_name)
+
+    def test_delete_new_district(self, web_browser):
+        browser, site_login, site_password = web_browser
+        start_page = StartTestPage()
+        address_fond_page = AddressFondPage()
+
+        start_page.enter_login(browser, site_login)
+        start_page.enter_password(browser, site_password)
+
+        if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
+            browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
+        start_page.address_fond_click(browser)
+
+        address_fond_page.addresses_of_residents_click(browser)
+        address_fond_page.select_input_control(browser)
+
+        address_fond_page.delete_button_click(browser)
+        address_fond_page.yes_button_click(browser)
+
+    def test_logout(self, web_browser):
+        enter_text = 'Вход'
+
+        browser, site_login, site_password = web_browser
+        start_page = StartTestPage()
+
+        start_page.enter_login(browser, site_login)
+        start_page.enter_password(browser, site_password)
+
+        if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
+            browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
+
+        start_page.user_menu_click(browser)
+        start_page.exit_button_click(browser)
+        start_page.check_text_enter_form(browser, text=enter_text)
