@@ -22,43 +22,53 @@ class AddressFondPage:
 
     # Actions
 
+    @allure.step('Нажатие кнопки "Адреса проживающих"')
     def addresses_of_residents_click(self, browser):
         browser.element(self.addresses_of_residents_locator).click()
 
+    @allure.step('Нажатие кнопки "Добавить запись"')
     def add_something_new_button_click(self, browser):
         browser.element(self.add_something_new_button_locator).click()
 
+    @allure.step('Нажатие кнопки "Район"')
     def district_click(self, browser):
         browser.element(by.text(self.district_locator_by_text)).click()
 
+    @allure.step('Ввод названия района')
     def district_name_input_field_add(self, browser, district_name):
         browser.element(self.district_name_input_field_locator).type(district_name).press_enter()
 
+    @allure.step('Проверка: название района есть в списке районов')
     def check_text_district_on_page(self, browser, text):
         browser.element(self.table_locator).should(have.text(text))
 
+    @allure.step('Проверка: кнопка "Адресный фонд" кликабельна')
     def address_fond_clickable(self, browser):
         browser.element(self.addresses_of_residents_locator).should(be.clickable)
 
+    @allure.step('Проверка: текст кнопки соответствует эталону')
     def check_text_address_fond(self, browser, text):
         browser.element(self.addresses_of_residents_locator).should(have.text(text))
 
+    @allure.step('Нажатие кнопки редактирования у последней записи в списке районов')
     def edit_button_click(self, browser):
         browser.all(self.edit_button_locator)[-1].click()
 
+    @allure.step('Выделение всего текста')
     def select_all_text(self, browser):
         browser.element(self.district_name_input_field_locator).perform(command.select_all)
 
+    @allure.step('Нажатие кнопки отметки у последней записи в списке')
     def select_input_control(self, browser):
         browser.all(self.input_control_locator)[-1].click()
 
+    @allure.step('Нажатие кнопки "Удалить запись"')
     def delete_button_click(self, browser):
         browser.element(self.delete_button_locator).click()
 
+    @allure.step('Нажатие кнопки "да" при удалении записи')
     def yes_button_click(self, browser):
         browser.all(self.button_yes_and_no_locator).first.click()
 
 
-
-# Keys.COMMAND + 'a' + Keys.BACKSPACE + Keys.NULL
 
