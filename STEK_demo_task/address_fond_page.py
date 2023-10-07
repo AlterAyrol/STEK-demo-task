@@ -2,7 +2,6 @@ import allure
 # from selene import browser
 from selene import be, have
 from selene import by
-from selenium.webdriver import ActionChains, Keys
 from selene import command
 
 
