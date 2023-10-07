@@ -51,11 +51,11 @@ class TestDemoCase:
         start_page = StartTestPage()
         address_fond_page = AddressFondPage()
 
-        start_page.enter_login(browser, site_login)
-        start_page.enter_password(browser, site_password)
-
-        if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
-            browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
+        # start_page.enter_login(browser, site_login)
+        # start_page.enter_password(browser, site_password)
+        #
+        # if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
+        #     browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
 
         start_page.address_fond_click(browser)
 
@@ -78,11 +78,11 @@ class TestDemoCase:
         start_page = StartTestPage()
         address_fond_page = AddressFondPage()
 
-        start_page.enter_login(browser, site_login)
-        start_page.enter_password(browser, site_password)
-
-        if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
-            browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
+        # start_page.enter_login(browser, site_login)
+        # start_page.enter_password(browser, site_password)
+        #
+        # if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
+        #     browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
 
         start_page.address_fond_click(browser)
 
@@ -104,11 +104,11 @@ class TestDemoCase:
         start_page = StartTestPage()
         address_fond_page = AddressFondPage()
 
-        start_page.enter_login(browser, site_login)
-        start_page.enter_password(browser, site_password)
-
-        if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
-            browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
+        # start_page.enter_login(browser, site_login)
+        # start_page.enter_password(browser, site_password)
+        #
+        # if browser.element('//div[@class="v-card__actions"]/button[@type="button"]').wait_until(have.text('Да')):
+        #     browser.element('//div[@class="v-card__actions"]/button[@type="button"]').click()
 
         start_page.address_fond_click(browser)
 
