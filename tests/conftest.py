@@ -18,7 +18,7 @@ def load_env():
 # @pytest.fixture(scope='function')
 
 
-@pytest.fixture(scope='function', params=[
+@pytest.fixture(scope='module', params=[
     pytest.param('chrome', id='chrome'),
     pytest.param('firefox', id='firefox')
 ])
