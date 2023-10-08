@@ -8,4 +8,5 @@ Some tests for demo tasks
 ![Allure Report - Google Chrome 08 10 2023 21_06_08](https://github.com/AlterAyrol/STEK-demo-task/assets/110398007/ae33a7ec-01f6-4715-b162-28dcacf4b11a)
 
 Пошаговое описание сценария с сохраением скриншота финала автотеста и видео всего автотеста:
-![Uploading Allure Report - Google Chrome 08.10.2023 21_06_40.png…]()
+![Allure Report - Google Chrome 08 10 2023 21_06_40](https://github.com/AlterAyrol/STEK-demo-task/assets/110398007/4a277d79-897c-45bf-9077-4dab607d0000)
+
