@@ -74,13 +74,14 @@ def web_browser(request):
 
 
 @pytest.fixture(scope='function')
-def browser_report(driver):
+def browser_report():
     yield
-    attach.add_html(driver)
-    attach.add_screenshot(driver)
-    attach.add_video(driver)
+    attach.add_html(browser)
+    attach.add_screenshot(browser)
+    attach.add_video(browser)
 
     browser.quit()
+
 
 @pytest.fixture(scope='function', params=[
     pytest.param([1920, 1080], id='FullHD'),
