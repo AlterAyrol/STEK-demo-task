@@ -1,6 +1,8 @@
 # STEK-demo-task
 Some tests for demo tasks
 
+Аллюр-отчёт: https://jenkins.autotests.cloud/job/007-alterayrol-STEK/13/allure/
+
 Главная страница с аллюр отчетом:
 ![Allure Report - Google Chrome 08 10 2023 21_05_36](https://github.com/AlterAyrol/STEK-demo-task/assets/110398007/46a5abf1-6912-48a7-8f62-e7610b6bfc6d)
 
