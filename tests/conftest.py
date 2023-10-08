@@ -18,7 +18,7 @@ def load_env():
 # @pytest.fixture(scope='function')
 
 
-@pytest.fixture(scope='class', params=[
+@pytest.fixture(scope='function', params=[
     pytest.param('chrome', id='chrome')
 ])
 def web_browser(request):
