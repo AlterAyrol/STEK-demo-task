@@ -53,6 +53,9 @@ def web_browser(request):
     # driver_options = webdriver.ChromeOptions()
     # browser.config.driver_options = driver_options
 
+    browser.config.window_width = 1920
+    browser.config.window_height = 1080
+
     driver = browser.open('/')
 
     yield driver, site_login, site_password
@@ -63,12 +66,3 @@ def web_browser(request):
 
     browser.quit()
 
-
-@pytest.fixture(scope='function', params=[
-    pytest.param([1920, 1080], id='Start')
-])
-def window_size(request):
-    browser.config.window_width = request.param[0]
-    browser.config.window_height = request.param[1]
-
-    yield
