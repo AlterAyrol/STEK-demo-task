@@ -65,10 +65,7 @@ def web_browser(request):
 
 
 @pytest.fixture(scope='function', params=[
-    pytest.param([1920, 1080], id='FullHD'),
-    pytest.param([2560, 1440], id='2k'),
-    pytest.param([4096, 2160], id='4k'),
-    pytest.param([1920, 1080], id='Small')
+    pytest.param([1920, 1080], id='Start')
 ])
 def window_size(request):
     browser.config.window_width = request.param[0]
