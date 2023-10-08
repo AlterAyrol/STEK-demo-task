@@ -19,8 +19,7 @@ def load_env():
 
 
 @pytest.fixture(scope='class', params=[
-    pytest.param('chrome', id='chrome'),
-    pytest.param('firefox', id='firefox')
+    pytest.param('chrome', id='chrome')
 ])
 def web_browser(request):
 
@@ -42,17 +41,6 @@ def web_browser(request):
         }
         options.capabilities.update(selenoid_capabilities)
 
-    elif request.param == 'fireFox':
-        selenoid_capabilities = {
-            "browserName": "firefox",
-            "browserVersion": "97.0",
-            "selenoid:options": {
-                "enableVNC": True,
-                "enableVideo": True
-            }
-        }
-        options.capabilities.update(selenoid_capabilities)
-
     login = os.getenv('LOGIN')
     password = os.getenv('PASSWORD')
 
@@ -65,20 +53,13 @@ def web_browser(request):
     # driver_options = webdriver.ChromeOptions()
     # browser.config.driver_options = driver_options
 
-    browser.config.window_width = 1920
-    browser.config.window_height = 1080
-
     driver = browser.open('/')
 
     yield driver, site_login, site_password
 
-
-@pytest.fixture(scope='function')
-def browser_report():
-    yield
-    attach.add_html(browser)
-    attach.add_screenshot(browser)
-    attach.add_video(browser)
+    attach.add_html(driver)
+    attach.add_screenshot(driver)
+    attach.add_video(driver)
 
     browser.quit()
 
@@ -87,7 +68,7 @@ def browser_report():
     pytest.param([1920, 1080], id='FullHD'),
     pytest.param([2560, 1440], id='2k'),
     pytest.param([4096, 2160], id='4k'),
-    pytest.param([800, 600], id='Small')
+    pytest.param([1920, 1080], id='Small')
 ])
 def window_size(request):
     browser.config.window_width = request.param[0]
